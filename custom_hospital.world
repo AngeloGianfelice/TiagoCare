@@ -1,0 +1,3556 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <physics type='ode'>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>20</iters>
+          <sor>1</sor>
+          <use_dynamic_moi_rescaling>0</use_dynamic_moi_rescaling>
+        </solver>
+        <constraints>
+          <cfm>0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>100</contact_max_correcting_vel>
+          <contact_surface_layer>0</contact_surface_layer>
+        </constraints>
+      </ode>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='wall_1_model'>
+      <pose>0 -5 1 0 -0 0</pose>
+      <static>1</static>
+      <link name='wall_1_body'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>10 0.2 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>10 0.2 2</size>
+            </box>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='wall_2_model'>
+      <pose>0 10 1 0 -0 0</pose>
+      <static>1</static>
+      <link name='wall_2_body'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>10 0.2 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>10 0.2 2</size>
+            </box>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='wall_3_model'>
+      <pose>-5 2.5 1 0 -0 0</pose>
+      <static>1</static>
+      <link name='wall_3_body'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 15 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 15 2</size>
+            </box>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='wall_4_model'>
+      <pose>5 2.5 1 0 -0 0</pose>
+      <static>1</static>
+      <link name='wall_4_body'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 15 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 15 2</size>
+            </box>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='wall_5_model'>
+      <pose>-2 5 1 0 -0 0</pose>
+      <static>1</static>
+      <link name='wall_5_body'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>6 0.2 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>6 0.2 2</size>
+            </box>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='wall_6_model'>
+      <pose>3.5 5 1 0 -0 0</pose>
+      <static>1</static>
+      <link name='wall_6_body'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>3 0.2 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>3 0.2 2</size>
+            </box>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <light name='male03light' type='point'>
+      <pose>3.6 0.53 1.6 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>1</range>
+        <linear>0.01</linear>
+        <constant>0.3</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <direction>0 0 -1</direction>
+      <spot>
+        <inner_angle>0.6</inner_angle>
+        <outer_angle>0.8</outer_angle>
+        <falloff>1.2</falloff>
+      </spot>
+      <cast_shadows>0</cast_shadows>
+    </light>
+    <light name='female02light' type='point'>
+      <pose>-2.5 -2.63 1.5 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>1</range>
+        <linear>0.01</linear>
+        <constant>0.3</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <direction>0 0 -1</direction>
+      <spot>
+        <inner_angle>0.6</inner_angle>
+        <outer_angle>0.8</outer_angle>
+        <falloff>1.2</falloff>
+      </spot>
+      <cast_shadows>0</cast_shadows>
+    </light>
+    <light name='female03light' type='point'>
+      <pose>-3 6.2 1.5 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>1</range>
+        <linear>0.01</linear>
+        <constant>0.3</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <direction>0 0 -1</direction>
+      <spot>
+        <inner_angle>0.6</inner_angle>
+        <outer_angle>0.8</outer_angle>
+        <falloff>1.2</falloff>
+      </spot>
+      <cast_shadows>0</cast_shadows>
+    </light>
+    <light name='female02bislight' type='point'>
+      <pose>3.8 6.7 1.5 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>1</range>
+        <linear>0.01</linear>
+        <constant>0.3</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <direction>0 0 -1</direction>
+      <spot>
+        <inner_angle>0.6</inner_angle>
+        <outer_angle>0.8</outer_angle>
+        <falloff>1.2</falloff>
+      </spot>
+      <cast_shadows>0</cast_shadows>
+    </light>
+    <light name='male03bislight' type='point'>
+      <pose>-2.9 3.7 1.5 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <attenuation>
+        <range>1</range>
+        <linear>0.01</linear>
+        <constant>0.3</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <direction>0 0 -1</direction>
+      <spot>
+        <inner_angle>0.6</inner_angle>
+        <outer_angle>0.8</outer_angle>
+        <falloff>1.2</falloff>
+      </spot>
+      <cast_shadows>0</cast_shadows>
+    </light>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>10.79 3.70083 16.6098 0 1.02447 3.11116</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <gravity>0 0 -9.81</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='ChairPotatoChip'>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/chairpotatochip/3/files/meshes/ChairPotatoChip.glb</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/chairpotatochip/3/files/meshes/ChairPotatoChip.glb</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-3.87948 -3.1489 0 0 -0 0</pose>
+    </model>
+    <model name='TrashBin'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/trashbin/2/files/meshes/TrashBin.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/trashbin/2/files/meshes/TrashBin.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.512779 -2.61468 0 0 -0 0</pose>
+    </model>
+    <model name='NurseDesk'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/nursedesk/3/files/meshes/NurseDesk.obj</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/nursedesk/3/files/meshes/NurseDesk.obj</uri>
+              <scale>0.001 0.001 0.001</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-2.29426 4.00971 0 0 -0 0</pose>
+    </model>
+    <model name='MonitorAndKeyboard'>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual_monitor'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/monitorandkeyboard/2/files/meshes/monitor.obj</uri>
+              <scale>0.2 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <pose>0 0 0 0 -0 0</pose>
+        </visual>
+        <collision name='collision_monitor'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/monitorandkeyboard/2/files/meshes/monitor.obj</uri>
+              <scale>0.2 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <pose>0 0 0 0 -0 0</pose>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_keyboard'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/monitorandkeyboard/2/files/meshes/keyboard.obj</uri>
+              <scale>0.2 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <pose>-0.27 0 0 0 -0 0</pose>
+        </visual>
+        <collision name='collision_keyboard'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/monitorandkeyboard/2/files/meshes/keyboard.obj</uri>
+              <scale>0.2 0.2 0.2</scale>
+            </mesh>
+          </geometry>
+          <pose>-0.27 0 0 0 -0 0</pose>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>1.23463 -2.98995 0 0 -0 0</pose>
+    </model>
+    <model name='LitterBin'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/litterbin/2/files/meshes/Litter.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/litterbin/2/files/meshes/Litter.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-4.1846 -4.35861 0 0 -0 0</pose>
+    </model>
+    <model name='IVStand'>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/ivstand/2/files/meshes/IVStand.obj</uri>
+              <scale>0.00817 0.00817 0.00817</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/ivstand/2/files/meshes/IVStand.obj</uri>
+              <scale>0.00817 0.00817 0.00817</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-1.85721 7.58419 0 0 -0 0</pose>
+    </model>
+    <model name='CoffeeTable'>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/coffeetable/2/files/meshes/CoffeeTable.obj</uri>
+              <scale>0.00817 0.00817 0.00817</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/coffeetable/2/files/meshes/CoffeeTable.obj</uri>
+              <scale>0.00817 0.00817 0.00817</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.747164 -2.4589 0 0 -0 0</pose>
+    </model>
+    <model name='BPCart'>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/bpcart/2/files/meshes/Cart_BP.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/bpcart/2/files/meshes/Cart_BP_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-3.20788 6.96091 0 0 -0 0</pose>
+    </model>
+    <model name='BloodPressureMonitor'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/bloodpressuremonitor/2/files/meshes/BloodPressureMonitor.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/bloodpressuremonitor/2/files/meshes/BloodPressureMonitor_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-1.8731 6.878 0 0 -0 0</pose>
+    </model>
+    <model name='Scrubs'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/scrubs/2/files/meshes/scrubs.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/scrubs/2/files/meshes/Scrubs_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.574628 7.19376 0 0 -0 0</pose>
+    </model>
+    <model name='SurgicalTrolleyMed'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/surgicaltrolleymed/2/files/meshes/SurgicalTrolleyMed.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/surgicaltrolleymed/2/files/meshes/SurgicalTrolleyMed_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-3.87453 9.39864 0 0 -0 0</pose>
+    </model>
+    <model name='PatientFSit'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/patientfsit/2/files/meshes/PatientFSit.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/patientfsit/2/files/meshes/PatientFSit_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.88051 -3.82763 0 0 -0 0</pose>
+    </model>
+    <model name='Nurse'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/nurse/2/files/meshes/Nurse.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/nurse/2/files/meshes/Nurse_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-2.79235 4.48465 0 0 -0 0</pose>
+    </model>
+    <model name='MaleVisitorOnPhone'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/malevisitoronphone/2/files/meshes/MaleVisitorStatic.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/malevisitoronphone/2/files/meshes/MaleVisitorStatic_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-2.96086 -3.99945 0 0 -0 0</pose>
+    </model>
+    <model name='AdjTable'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/adjtable/4/files/meshes/AdjTable.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/adjtable/4/files/meshes/AdjTable_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>2.01103 -0.610511 0 0 -0 0</pose>
+    </model>
+    <model name='DeskChair'>
+      <static>1</static>
+      <link name='link'>
+        <pose>0 0 0 0 -0 1.5708</pose>
+        <collision name='collision'>
+          <pose>0.001581 0.000308 0.612847 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.33</radius>
+              <length>1.23</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/deskchair/2/files/meshes/DeskChair.obj</uri>
+              <scale>0.01 0.01 0.01</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>2.64684 -3.02899 0 0 -0 0</pose>
+    </model>
+    <model name='ElderMalePatient'>
+      <link name='link'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/eldermalepatient/2/files/meshes/ElderMalePatient.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/eldermalepatient/2/files/meshes/ElderMalePatient.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-1.69399 0.709499 0 0 -0 0</pose>
+    </model>
+    <model name='ElderLadyPatient'>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/elderladypatient/2/files/meshes/ElderFemale.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/elderladypatient/2/files/meshes/ElderFemale.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-2.38352 2.76248 0 0 -0 0</pose>
+    </model>
+    <model name='BedTable'>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/bedtable/2/files/meshes/BedTable.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/bedtable/2/files/meshes/BedTable_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>2.24733 4.27672 0 0 -0 0</pose>
+    </model>
+    <model name='VisitorKidSit'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/visitorkidsit/2/files/meshes/VisitorKidSit.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/visitorkidsit/2/files/meshes/VisitorKidSit_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-2.91467 -2.92367 0 0 -0 0</pose>
+    </model>
+    <model name='FemaleVisitorSit'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/femalevisitorsit/2/files/meshes/FemaleVisitorSit.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/femalevisitorsit/2/files/meshes/FemaleVisitorSit_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>1.24175 0.716105 0 0 -0 0</pose>
+    </model>
+    <model name='FemaleVisitor'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/femalevisitor/2/files/meshes/FemaleVisitor.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/femalevisitor/2/files/meshes/FemaleVisitor_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>2.48974 1.045 0 0 -0 0</pose>
+    </model>
+    <model name='WalkingCane'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/walkingcane/2/files/meshes/WalkingCane.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/walkingcane/2/files/meshes/WalkingCane_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.641271 3.13972 0 0 -0 0</pose>
+    </model>
+    <model name='WhiteChipChair'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/whitechipchair/3/files/meshes/WhiteChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/whitechipchair/3/files/meshes/WhiteChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-4.56839 -3.23718 0 0 -0 0</pose>
+    </model>
+    <model name='RollingWalker'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/rollingwalker/2/files/meshes/RollingWalker.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/rollingwalker/2/files/meshes/RollingWalker_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>1.58906 1.97117 0 0 -0 0</pose>
+    </model>
+    <model name='PotatoChipChair'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-1.6888 -3.68179 0 0 -0 0</pose>
+    </model>
+    <model name='PatientWheelChair'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/patientwheelchair/4/files/meshes/PatientWheelChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/patientwheelchair/4/files/meshes/PatientWheelChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>2.79567 2.48148 0 0 -0 0</pose>
+    </model>
+    <model name='OpScrubs'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/opscrubs/3/files/meshes/OpScrubs.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/opscrubs/3/files/meshes/OpScrubs_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.631774 8.50187 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>2196 345000000</sim_time>
+      <real_time>131 201783880</real_time>
+      <wall_time>1755527741 540215181</wall_time>
+      <iterations>30216</iterations>
+      <model name='AdjTable'>
+        <pose>2.67447 8.55019 0 0 0 -3.14007</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>2.67447 8.55019 0 0 -0 -3.14007</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='BPCart'>
+        <pose>-4.37487 7.85496 0.003447 -0 2e-06 1.57063</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-4.37487 7.85496 0.003447 -0 2e-06 1.57063</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-8.5e-05 -0.012472 2.46448 -2.65805 0.001187 0.000412</acceleration>
+          <wrench>-8.5e-05 -0.012472 2.46448 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='BedTable'>
+        <pose>4.28755 5.40287 0.00119 0 -0 0.000125</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>4.28755 5.40287 0.00119 0 -0 0.000125</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.009275 -0.003559 4.41106 -3.03629 1.38963 -0.000904</acceleration>
+          <wrench>0.009275 -0.003559 4.41106 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='BedsideTable2'>
+        <pose>-4.54134 5.39257 0 0 -0 1.62392</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-4.54134 5.39257 0 0 -0 1.62392</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='BloodPressureMonitor'>
+        <pose>0.088922 9.62785 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>0.088922 9.62785 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ChairPotatoChip'>
+        <pose>-3.87948 -3.1489 -2.14736e+07 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-3.87948 -3.1489 -2.14736e+07 0 -0 0</pose>
+          <velocity>0 0 -20526 0 -0 0</velocity>
+          <acceleration>0 0 -9.81 0 -0 0</acceleration>
+          <wrench>0 0 -9.81 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='CoffeeTable'>
+        <pose>3.11614 -3.51393 -0.00012 -3e-06 -2e-06 -2.71845</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>3.11614 -3.51393 -0.00012 -3e-06 -2e-06 -2.71845</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.000305 0.000116 -1.9198 -2.16598 -0.582787 3.14159</acceleration>
+          <wrench>0.000305 0.000116 -1.9198 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='DeskChair'>
+        <pose>2.50942 9.52918 0 0 0 -1.57099</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>2.50942 9.52918 0 0 0 -0.000187</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ElderLadyPatient'>
+        <pose>-3.87146 8.71632 0.001659 0 1e-06 -0.013469</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-3.87146 8.71632 0.001659 0 1e-06 -0.013469</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.01768 -0.000315 7.51339 -3.00036 -1.22457 -3.14144</acceleration>
+          <wrench>0.01768 -0.000315 7.51339 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ElderMalePatient'>
+        <pose>-3.90963 6.29149 0.001655 -1e-06 -6e-06 0.001922</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-3.90963 6.29149 0.001655 -1e-06 -6e-06 0.001922</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.001981 0.001018 -8.38114 -0.616314 -1.20193 2e-06</acceleration>
+          <wrench>-0.001981 0.001018 -8.38114 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Extinguisher'>
+        <pose>-4.61916 0.682799 -0.212458 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-4.61916 0.682799 0.787542 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='FemaleVisitor'>
+        <pose>-0.062155 6.38661 0 0 -0 2.7438</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-0.062155 6.38661 0 0 -0 2.7438</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='FemaleVisitorSit'>
+        <pose>4.51863 -4.11902 0.009315 0 0 -1.60791</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>4.51863 -4.11902 0.009315 0 0 -1.60791</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='HospitalPillow'>
+        <pose>3.84701 5.42102 1.01788 0 -0 1.57504</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>3.84701 5.42102 1.01788 0 -0 1.57504</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='IVStand'>
+        <pose>-3.81168 5.38699 0.000678 1.8e-05 1.1e-05 3e-05</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-3.81168 5.38699 0.000678 1.8e-05 1.1e-05 3e-05</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.002014 0.002133 18.9446 -0.014566 -0.197539 -3.14153</acceleration>
+          <wrench>-0.002014 0.002133 18.9446 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='InstrumentCart1'>
+        <pose>-4.27724 7.22166 0 0 -0 1.56297</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-4.27724 7.22166 0 0 -0 1.56297</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='InstrumentCart2'>
+        <pose>-0.741193 9.50171 0 0 0 -0.015263</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-0.741193 9.50171 0 0 0 -0.015263</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='LitterBin'>
+        <pose>-4.32213 -4.405 0 0 -0 0.61781</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-4.32213 -4.405 0 0 -0 0.61781</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='MaleVisitorOnPhone'>
+        <pose>-3.24232 -3.59943 0 0 0 -3.14115</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-3.24232 -3.59943 0 0 0 -3.14115</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='MaleVisitorSit'>
+        <pose>0.388543 -4.66194 0 0 -0 3.03711</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>0.388543 -4.66194 0 0 -0 3.03711</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ManualFireAlarmButton'>
+        <pose>4.86592 1.36449 1.17492 0 0 -1.50691</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>4.86592 1.36449 1.17492 0 0 -1.50691</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='MonitorAndKeyboard'>
+        <pose>2.11556 8.31654 0.810564 0 0 -2.35089</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>2.11556 8.31654 0.810564 0 0 -2.35089</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -9.81 0 -0 0</acceleration>
+          <wrench>0 0 -9.81 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Nurse'>
+        <pose>-2.79235 4.48465 0 0 0 -1.46222</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-2.79235 4.48465 0 0 0 -1.46222</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='NurseDesk'>
+        <pose>-2.29426 3.93633 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-2.29426 3.93633 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='OpScrubs'>
+        <pose>2.95666 9.2188 0 0 0 -1.41291</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>2.95666 9.2188 0 0 -0 -1.41291</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PatientFSit'>
+        <pose>4.64754 3.69759 -0.001675 0 0 -3.13858</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>4.64754 3.69759 -0.001675 0 -0 -3.13858</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PatientWheelChair'>
+        <pose>3.3246 -0.519351 0 0 -0 2.35908</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>3.3246 -0.519351 0 0 -0 2.35908</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PotatoChipChair'>
+        <pose>-2.78397 -4.58491 0 0 -0 1.53052</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-2.78397 -4.58491 0 0 -0 1.53052</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PotatoChipChair_clone'>
+        <pose>-1.16504 -4.60618 0 0 -0 1.53052</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-1.16504 -4.60618 0 0 -0 1.53052</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PotatoChipChair_clone_0'>
+        <pose>0.449385 -4.62577 0 0 -0 1.53052</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>0.449385 -4.62577 0 0 -0 1.53052</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PotatoChipChair_clone_0_clone'>
+        <pose>2.04679 -4.64983 0 0 -0 1.53052</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>2.04679 -4.64983 0 0 -0 1.53052</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PotatoChipChair_clone_0_clone_0'>
+        <pose>3.63159 -4.6575 0 0 -0 1.53052</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>3.63159 -4.6575 0 0 -0 1.53052</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PotatoChipChair_clone_0_clone_1'>
+        <pose>4.66714 -0.682282 0 0 -0 3.13636</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>4.66714 -0.682282 -0 0 -0 3.13636</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PotatoChipChair_clone_0_clone_1_clone'>
+        <pose>4.67521 0.99606 0 0 -0 3.13636</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>4.67521 0.99606 0 0 -0 3.13636</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PotatoChipChair_clone_0_clone_1_clone_0'>
+        <pose>4.66369 3.69782 0 0 -0 3.13636</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>4.66369 3.69782 0 0 -0 3.13636</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PotatoChipChair_clone_0_clone_1_clone_1'>
+        <pose>3.52102 -1.84448 0 0 -0 1.53744</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>3.52102 -1.84448 0 0 -0 1.53744</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PotatoChipChair_clone_0_clone_2'>
+        <pose>3.52535 -2.34788 0 0 0 -1.59228</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>3.52535 -2.34788 0 0 0 -1.59228</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='PotatoChipChair_clone_0_clone_3'>
+        <pose>4.59107 -3.61671 0 0 -0 3.09263</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>4.59107 -3.61671 0 0 -0 3.09263</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Provence_Bath_Towel_Royal_Blue'>
+        <pose>-3.90907 9.63542 0.702909 -2.2e-05 0.014106 -0.000961</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>-3.90907 9.63542 0.702909 -2.2e-05 0.014106 -0.000961</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.000131 0.000472 -0.019567 0.421874 0.116584 -0</acceleration>
+          <wrench>-0.000131 0.000472 -0.019567 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='RollingWalker'>
+        <pose>-4.38424 3.16826 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-4.38424 3.16826 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Scrubs'>
+        <pose>-1.77768 9.56788 0 0 0 -1.97244</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-1.77768 9.56788 0 0 0 -1.97244</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ScrubsTrolley'>
+        <pose>0.261402 5.40608 0 0 -0 3.12939</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>0.261402 5.40608 0 0 -0 3.12939</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='SurgicalTrolleyMed'>
+        <pose>-4.18067 9.6185 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-4.18067 9.6185 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='SurgicalTrolleyMed_0'>
+        <pose>0.957085 9.55491 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>0.957085 9.55491 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Tag_Dishtowel_18_x_26'>
+        <pose>-4.47575 9.61907 -881708 0.00029 0.008115 -0.082376</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>-4.47575 9.61907 -881708 0.00029 0.008115 -0.082376</pose>
+          <velocity>0 0 -4159.27 0 -0 0</velocity>
+          <acceleration>0 0 -9.81 0 -0 0</acceleration>
+          <wrench>0 0 -9.81 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Tag_Dishtowel_18_x_26_0'>
+        <pose>-2.19761 8.38368 -185806 -0.002769 0.013513 0.000233</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>-2.19761 8.38368 -185806 -0.002769 0.013513 0.000233</pose>
+          <velocity>1e-06 0 -1909.35 0 -0 0</velocity>
+          <acceleration>0 0 -9.81 0 -0 0</acceleration>
+          <wrench>0 0 -9.81 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Tag_Dishtowel_18_x_26_clone'>
+        <pose>-4.17233 9.64138 -881696 0.001833 0.015015 -0.058626</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>-4.17233 9.64138 -881696 0.001833 0.015015 -0.058626</pose>
+          <velocity>1e-06 -2e-06 -4159.24 0 -0 0</velocity>
+          <acceleration>0 0 -9.81 0 -0 0</acceleration>
+          <wrench>0 0 -9.81 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Tag_Dishtowel_Dobby_Stripe_Blue_18_x_26'>
+        <pose>-2.13224 8.70766 -185806 -0.002947 0.013763 0.000467</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>-2.13224 8.70766 -185806 -0.002947 0.013763 0.000467</pose>
+          <velocity>1e-06 -1e-06 -1909.35 0 -0 0</velocity>
+          <acceleration>0 0 -9.81 0 -0 0</acceleration>
+          <wrench>0 0 -9.81 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='TrashBin'>
+        <pose>-3.83537 4.60012 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-3.83537 4.60012 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='VendingMachine'>
+        <pose>-4.53165 -3.54929 -0 -1e-06 -0 -0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-4.53165 -3.54929 -0 -1e-06 -0 -0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 2e-06 0.123835 2.08028 0.017578 0</acceleration>
+          <wrench>0 2e-06 0.123835 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='VisitorChair_clone'>
+        <pose>3.0007 7.07728 0 0 -0 3.13835</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>3.0007 7.07728 0 0 -0 3.13835</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='VisitorKidSit'>
+        <pose>3.06737 7.25566 0.093077 0 0 -3.11962</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>3.06737 7.25566 0.093077 0 -0 -3.11962</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='WalkingCane'>
+        <pose>-3.39135 8.0458 0 -0.150702 0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-3.39135 8.0458 0 -0.150702 0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='WhiteChipChair'>
+        <pose>-4.57735 -2.04245 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-4.57735 -2.04245 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='WhiteChipChair_clone'>
+        <pose>-4.5797 -0.452174 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-4.5797 -0.452174 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='WhiteChipChair_clone_clone'>
+        <pose>-4.58657 1.81293 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-4.58657 1.81293 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='WhiteChipChair_clone_clone_clone'>
+        <pose>-1.18334 6.21817 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='body'>
+          <pose>-1.18334 6.21817 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='edgar'>
+        <pose>0.871108 -1.89277 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.871108 -1.89277 0 1.5708 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='wall_1_model'>
+        <pose>0 -5 1 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='wall_1_body'>
+          <pose>0 -5 1 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='wall_2_model'>
+        <pose>0 10 1 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='wall_2_body'>
+          <pose>0 10 1 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='wall_3_model'>
+        <pose>-5 2.5 1 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='wall_3_body'>
+          <pose>-5 2.5 1 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='wall_4_model'>
+        <pose>5 2.5 1 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='wall_4_body'>
+          <pose>5 2.5 1 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='wall_5_model'>
+        <pose>-2 5 1 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='wall_5_body'>
+          <pose>-2 5 1 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='wall_6_model'>
+        <pose>3.5 5 1 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='wall_6_body'>
+          <pose>3.5 5 1 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='wall_6_model_clone'>
+        <pose>-1.5309 6.41769 1 0 0 -1.58512</pose>
+        <scale>1 1 1</scale>
+        <link name='wall_6_body'>
+          <pose>-1.5309 6.41769 1 0 0 -1.58512</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='female02bislight'>
+        <pose>3.8 6.7 1.5 0 -0 0</pose>
+      </light>
+      <light name='female02light'>
+        <pose>-2.5 -2.63 1.5 0 -0 0</pose>
+      </light>
+      <light name='female03light'>
+        <pose>-3 6.2 1.5 0 -0 0</pose>
+      </light>
+      <light name='male03bislight'>
+        <pose>-2.9 3.7 1.5 0 -0 0</pose>
+      </light>
+      <light name='male03light'>
+        <pose>3.6 0.53 1.6 0 -0 0</pose>
+      </light>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <model name='HospitalPillow'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/hospitalpillow/2/files/meshes/HospitalPillow.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/hospitalpillow/2/files/meshes/HospitalPillow_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>1.28118 4.03569 0 0 -0 0</pose>
+    </model>
+    <model name='InstrumentCart2'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/instrumentcart2/2/files/meshes/InstrumentCart2.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/instrumentcart2/2/files/meshes/InstrumentCart2.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-2.30428 -1.65815 0 0 -0 0</pose>
+    </model>
+    <model name='InstrumentCart1'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/instrumentcart1/2/files/meshes/InstrumentCart1.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/instrumentcart1/2/files/meshes/InstrumentCart1.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-3.64848 -1.02863 0 0 -0 0</pose>
+    </model>
+    <model name='ManualFireAlarmButton'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/manualfirealarmbutton/2/files/meshes/ManualFireAlarmButton.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/manualfirealarmbutton/2/files/meshes/ManualFireAlarmButton_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-4.32383 1.48261 0 0 -0 0</pose>
+    </model>
+    <model name='Extinguisher'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 1 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/extinguisher cabinet/2/files/meshes/box.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/extinguisher cabinet/2/files/meshes/box.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-4.61916 0.682799 0 0 -0 0</pose>
+    </model>
+    <model name='BedsideTable2'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/bedsidetable2/2/files/meshes/BedsideTable2.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/bedsidetable2/2/files/meshes/BedsideTable2_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-3.70941 6.07964 0 0 -0 0</pose>
+    </model>
+    <model name='VendingMachine'>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/vendingmachine/3/files/meshes/VendingMachine.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/vendingmachine/3/files/meshes/VendingMachine.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.508701 -1.59272 0 0 -0 0</pose>
+    </model>
+    <model name='WhiteChipChair_clone'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/whitechipchair/3/files/meshes/WhiteChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/whitechipchair/3/files/meshes/WhiteChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-4.5797 -0.452174 0 0 -0 0</pose>
+    </model>
+    <model name='WhiteChipChair_clone_clone'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/whitechipchair/3/files/meshes/WhiteChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/whitechipchair/3/files/meshes/WhiteChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-4.58657 1.81293 0 0 -0 0</pose>
+    </model>
+    <model name='PotatoChipChair_clone'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-1.16504 -4.60618 0 0 -0 1.53052</pose>
+    </model>
+    <model name='PotatoChipChair_clone_0'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.449385 -4.62577 0 0 -0 1.53052</pose>
+    </model>
+    <model name='PotatoChipChair_clone_0_clone'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>2.04679 -4.64983 0 0 -0 1.53052</pose>
+    </model>
+    <model name='PotatoChipChair_clone_0_clone_0'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>3.63159 -4.6575 0 0 -0 1.53052</pose>
+    </model>
+    <model name='PotatoChipChair_clone_0_clone_1'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>1.82578 -2.59774 0 0 -0 1.53052</pose>
+    </model>
+    <model name='PotatoChipChair_clone_0_clone_2'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>3.34586 -1.6491 0 0 -0 1.53052</pose>
+    </model>
+    <model name='PotatoChipChair_clone_0_clone_3'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>3.80462 -3.86205 0 0 -0 1.53052</pose>
+    </model>
+    <model name='PotatoChipChair_clone_0_clone_1_clone'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>4.67198 0.378994 0 0 -0 3.13636</pose>
+    </model>
+    <model name='PotatoChipChair_clone_0_clone_1_clone_0'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>4.65018 1.98625 0 0 -0 3.13636</pose>
+    </model>
+    <model name='MaleVisitorSit'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/malevisitorsit/2/files/meshes/MaleVisitorSit.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/malevisitorsit/2/files/meshes/MaleVisitorSit_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.569956 -2.93191 0 0 -0 0</pose>
+    </model>
+    <model name='edgar'>
+      <static>1</static>
+      <link name='link'>
+        <pose>0 0 0 1.5708 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/nkoenig/.ignition/fuel/fuel.ignitionrobotics.org/OpenRobotics/models/edgar/1/meshes/edgar.obj</uri>
+              <scale>0.01 0.01 0.01</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>file:///home/nkoenig/.ignition/fuel/fuel.ignitionrobotics.org/OpenRobotics/models/edgar/1/meshes/edgar.obj</uri>
+              <scale>0.01 0.01 0.01</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.871108 -1.89277 0 0 -0 0</pose>
+    </model>
+    <model name='VisitorChair_clone'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/visitorchair/3/files/meshes/VisitorChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/visitorchair/3/files/meshes/VisitorChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>1.86908 6.8448 0 0 -0 1.17258</pose>
+    </model>
+    <model name='ScrubsTrolley'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/scrubstrolley/3/files/meshes/ScrubsTrolley.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/scrubstrolley/3/files/meshes/ScrubsTrolley_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>2.0255 9.64055 0 0 -0 0</pose>
+    </model>
+    <model name='SurgicalTrolleyMed_0'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/surgicaltrolleymed/2/files/meshes/SurgicalTrolleyMed.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/surgicaltrolleymed/2/files/meshes/SurgicalTrolleyMed_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>1.82468 9.02419 0 0 -0 0</pose>
+    </model>
+    <model name='PotatoChipChair_clone_0_clone_1_clone_1'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/potatochipchair/3/files/meshes/PotatoChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.646326 -1.74856 -0 0 -0 3.13636</pose>
+    </model>
+    <model name='Tag_Dishtowel_18_x_26'>
+      <link name='link_0'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/root/.ignition/fuel/fuel.gazebosim.org/googleresearch/models/tag_dishtowel_18_x_26/1/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision_0'>
+          <geometry>
+            <mesh>
+              <uri>/root/.ignition/fuel/fuel.gazebosim.org/googleresearch/models/tag_dishtowel_18_x_26/1/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-1.11278 8.23892 0 0 -0 0</pose>
+    </model>
+    <model name='Tag_Dishtowel_18_x_26_clone'>
+      <link name='link_0'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/root/.ignition/fuel/fuel.gazebosim.org/googleresearch/models/tag_dishtowel_18_x_26/1/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision_0'>
+          <geometry>
+            <mesh>
+              <uri>/root/.ignition/fuel/fuel.gazebosim.org/googleresearch/models/tag_dishtowel_18_x_26/1/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-4.17276 9.6422 0.703647 0.003114 0.016387 -0.058611</pose>
+    </model>
+    <model name='wall_6_model_clone'>
+      <pose>-1.08377 7.34759 1 0 -0 0</pose>
+      <static>1</static>
+      <link name='wall_6_body'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>3 0.2 2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>3 0.2 2</size>
+            </box>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='Tag_Dishtowel_18_x_26_0'>
+      <link name='link_0'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/root/.ignition/fuel/fuel.gazebosim.org/googleresearch/models/tag_dishtowel_18_x_26/1/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision_0'>
+          <geometry>
+            <mesh>
+              <uri>/root/.ignition/fuel/fuel.gazebosim.org/googleresearch/models/tag_dishtowel_18_x_26/1/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.610405 8.22328 0 0 -0 0</pose>
+    </model>
+    <model name='Tag_Dishtowel_Dobby_Stripe_Blue_18_x_26'>
+      <link name='link_0'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/root/.ignition/fuel/fuel.gazebosim.org/googleresearch/models/tag_dishtowel_dobby_stripe_blue_18_x_26/1/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision_0'>
+          <geometry>
+            <mesh>
+              <uri>/root/.ignition/fuel/fuel.gazebosim.org/googleresearch/models/tag_dishtowel_dobby_stripe_blue_18_x_26/1/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.603064 7.65007 0 0 -0 0</pose>
+    </model>
+    <model name='WhiteChipChair_clone_clone_clone'>
+      <static>1</static>
+      <link name='body'>
+        <pose>0 0 0 0 -0 0</pose>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/whitechipchair/3/files/meshes/WhiteChipChair.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/whitechipchair/3/files/meshes/WhiteChipChair_Col.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-1.18334 6.21817 0 0 -0 0</pose>
+    </model>
+    <model name='Provence_Bath_Towel_Royal_Blue'>
+      <link name='link_0'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/root/.ignition/fuel/fuel.gazebosim.org/googleresearch/models/provence_bath_towel_royal_blue/1/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision_0'>
+          <geometry>
+            <mesh>
+              <uri>/root/.ignition/fuel/fuel.gazebosim.org/googleresearch/models/provence_bath_towel_royal_blue/1/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-3.30259 9.63064 0 0 -0 0</pose>
+    </model>
+  </world>
+</sdf>
