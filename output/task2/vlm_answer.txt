@@ -1,0 +1,4 @@
+1) (pillow, on, treatment table)
+2) (treatment table, left to, chair)
+3) (book, on, person)
+4) (person, on, chair)

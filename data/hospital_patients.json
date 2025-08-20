@@ -1,0 +1,121 @@
+{
+  "patients": [
+    {
+      "id": "kid",
+      "name": "Liam",
+      "surname": "Turner",
+      "age": 8,
+      "gender": "Male",
+      "visit_reason": "Fever and sore throat",
+      "visit_date": "2025-08-06",
+      "visit_time": "10:15",
+      "booked_visit": true,
+      "priority": "Low",
+      "medical_record": "No chronic conditions. Last visit: 2024-12-15"
+    },
+    {
+      "id": "standing_woman",
+      "name": "Sophia",
+      "surname": "Martinez",
+      "age": 34,
+      "gender": "Female",
+      "visit_reason": "Annual physical exam",
+      "visit_date": "2025-08-06",
+      "visit_time": "09:00",
+      "booked_visit": true,
+      "priority": "Low",
+      "medical_record": "Healthy. Annual check-ups since 2022"
+    },
+    {
+      "id": "sitting_woman",
+      "name": "Emily",
+      "surname": "Chen",
+      "age": 47,
+      "gender": "Female",
+      "visit_reason": "Back pain",
+      "visit_date": "2025-08-06",
+      "visit_time": "11:30",
+      "booked_visit": false,
+      "priority": "Medium",
+      "medical_record": "History of lumbar disc herniation"
+    },
+    {
+      "id": "standing_man",
+      "name": "Noah",
+      "surname": "Johnson",
+      "age": 28,
+      "gender": "Male",
+      "visit_reason": "Skin rash",
+      "visit_date": "2025-08-06",
+      "visit_time": "08:45",
+      "booked_visit": true,
+      "priority": "Low",
+      "medical_record": "Allergic reaction to shellfish in 2023"
+    },
+    {
+      "id": "wheelchair_patient",
+      "name": "Grace",
+      "surname": "O'Connor",
+      "age": 61,
+      "gender": "Female",
+      "visit_reason": "Diabetes management",
+      "visit_date": "2025-08-06",
+      "visit_time": "10:45",
+      "booked_visit": true,
+      "priority": "High",
+      "medical_record": "Type 2 diabetes diagnosed in 2017; uses wheelchair since 2020"
+    },
+    {
+      "id": "bed_patient1",
+      "name": "David",
+      "surname": "Nguyen",
+      "age": 72,
+      "gender": "Male",
+      "visit_reason": "Post-surgery recovery",
+      "visit_date": "2025-08-06",
+      "visit_time": "N/A",
+      "booked_visit": false,
+      "priority": "High",
+      "medical_record": "Knee replacement surgery on 2025-08-01"
+    },
+    {
+      "id": "bed_patient2",
+      "name": "Isabella",
+      "surname": "Romero",
+      "age": 55,
+      "gender": "Female",
+      "visit_reason": "Pneumonia treatment",
+      "visit_date": "2025-08-06",
+      "visit_time": "N/A",
+      "booked_visit": false,
+      "priority": "High",
+      "medical_record": "Admitted on 2025-08-03 with shortness of breath"
+    },
+    {
+      "id": "elderly_patient",
+      "name": "Evelyn",
+      "surname": "Bennett",
+      "age": 87,
+      "gender": "Female",
+      "visit_reason": "Routine geriatric assessment",
+      "visit_date": "2025-08-06",
+      "visit_time": "13:00",
+      "booked_visit": true,
+      "priority": "Medium",
+      "medical_record": "Mild cognitive impairment, osteoporosis"
+    },
+    {
+      "id": "sitting_man",
+      "name": "James",
+      "surname": "Ali",
+      "age": 39,
+      "gender": "Male",
+      "visit_reason": "Migraine",
+      "visit_date": "2025-08-06",
+      "visit_time": "12:20",
+      "booked_visit": false,
+      "priority": "Medium",
+      "medical_record": "Recurrent migraines since 2020"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+1) (chair1, left to, chair2)
+2) (chair2, left to, chair3)
+3) (person, on, chair2)

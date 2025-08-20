@@ -1,0 +1,4 @@
+1) (patient, on, bed)
+2) (bed, left to, table)
+3) (monitor, left to, bed)
+4) (towel, on, table)
