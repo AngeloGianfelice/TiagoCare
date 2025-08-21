@@ -107,7 +107,7 @@ Arguments
   roslaunch tiago_gazebo tiago_gazebo.launch public_sim:=true end_effector:=pal-hey5 world:=custom_hospital
   ```
 
-  If you want Tiago to spawn in our task-specific coordinates simply add the roslaunch command the ***gzpose*** parameter as follows:
+  If you want Tiago to spawn in our task-specific coordinates simply add to the roslaunch command the ***gzpose*** parameter as follows:
   - **task1**: gzpose:="-x 2.09 -y 3.68 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"
   - **task2**: gzpose:="-x 4.29 -y 9.29 -z 0.00 -R 0.0 -P 0.0 -Y -1.74"
   - **task3**: gzpose:="-x -1.39 -y 8.63 -z -0.001 -R 0.0 -P 0.0 -Y 2.98"
